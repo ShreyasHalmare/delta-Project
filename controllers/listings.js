@@ -4,7 +4,7 @@ const mapToken = process.env.MAP_TOKEN;
 config.apiKey = mapToken;
 
 module.exports.index = async (req, res) => {
- const allListing = await Listing.find({});
+ const allListing = await Listing.find({}).maxTimeMS(30000); // Increased timeout to 30 seconds
 res.render("listings/index", { allListing });
 
 };
